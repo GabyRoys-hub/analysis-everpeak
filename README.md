@@ -11,7 +11,7 @@ Análisis exploratorio e integrativo de datos sobre **movilidad urbana y product
 
 Haz clic en el siguiente botón:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](URL_DEL_NOTEBOOK_EN_GITHUB)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/GabyRoys-hub/analysis-everpeak/blob/main/everpeak_analysis.ipynb)
 
 O:
 
