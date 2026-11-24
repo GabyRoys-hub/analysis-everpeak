@@ -2,25 +2,31 @@
 
 Análisis exploratorio e integrativo de datos sobre **movilidad urbana y productividad económica** (PIB per cápita y población) en ciudades de Latinoamérica durante **2024**, a partir de los conjuntos de datos de *TomTom Traffic Index* y *OECD Cities*. En el notebook se limpian y estandarizan los datos, se consolidan métricas anuales de congestión (como `JamsDelay`, `TrafficIndexLive`, `JamsLengthInKms`, `JamsCount` y `MinsDelay`), se cruzan con indicadores económicos (`city_gdp_capita` y `population`) y se evalúa visualmente si existe una relación clara entre congestión y PIB per cápita para orientar decisiones de inversión en infraestructura de transporte.
 
-## Contenido del repositorio
+## 📂 Contenido del repositorio
 
-* **Notebook principal (`.ipynb`)**: contiene todo el flujo paso a paso en Python (`pandas`, `numpy`, `seaborn`, `matplotlib`), desde la carga, limpieza de fechas/formatos numéricos y filtrado a 2024 hasta la agregación por ciudad, unión (`inner` join), visualizaciones y exportación.
-* **Gráficas generadas en el notebook**:
-  * **Boxplot de `JamsDelay` (2024)**: muestra distribución, media, mediana y valores atípicos en los minutos de congestión.
-  * **Histograma de `city_gdp_capita` (con KDE)**: resume la distribución y el nivel del PIB per cápita.
-  * **Gráfico de barras comparativo (`JamsDelay` vs. `city_gdp_capita`)**: compara ambos indicadores por ciudad (primeras 15 ciudades del dataset combinado).
-* **Dataset exportado**: `ladb_mobility_economy_2024_clean.csv`, generado al final del notebook con los datos limpios y combinados (`index=False`).
-* *(Nota: en el notebook adjunto no se incluyen scripts `.py` externos; todo el código vive dentro de las celdas del notebook).*
+- `notebooks/everpeak_analysis.ipynb`
+  → Notebook principal con limpieza, EDA, distribuciones, outliers y conclusiones.
 
-## Abrir en Google Colab y reproducir el análisis
+## ▶ Cómo abrir el notebook en Google Colab
 
-1. **Abrir en Colab**: sube tu archivo `.ipynb` a Google Colab (*Archivo → Subir notebook*) o ábrelo directamente desde GitHub usando Colab (*Archivo → Abrir notebook → pestaña GitHub*).
-2. **Carga del dataset**: el notebook **ya incluye** las celdas de carga con `pd.read_csv('/datasets/tomtom_traffic.csv')` y `pd.read_csv('/datasets/oecd_city_economy.csv')`. Si ejecutas fuera del entorno donde existen las rutas `/datasets/...`, sube ambos archivos CSV o ajusta las rutas en la celda de carga antes de correr el resto.
-3. **Orden de ejecución**: ejecuta las celdas **secuencialmente de arriba hacia abajo** (`Paso 1` → `Paso 7`):
-   1. Importar librerías y cargar `traffic` y `eco`.
-   2. Explorar estructura/nulos, renombrar columnas a `snake_case` y convertir fechas (`datetime`) y columnas numéricas (`float`).
-   3. Extraer `year` y filtrar ambos DataFrames para `2024` (`traffic_2024` y `eco_2024`).
-   4. Calcular promedios anuales por ciudad y revisar el ranking por `JamsDelay`.
-   5. Seleccionar columnas clave y unir con `pd.merge(..., how='inner')` en `merged`.
-   6. Generar las visualizaciones y revisar observaciones.
-   7. Exportar `ladb_mobility_economy_2024_clean.csv`.
+Haz clic en el siguiente botón:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](URL_DEL_NOTEBOOK_EN_GITHUB)
+
+O:
+
+1. Abre el archivo `.ipynb` en GitHub
+2. Haz clic en **Open in Colab**
+
+## 📘 Cómo reproducir el análisis
+
+1. Abre `notebooks/everpeak_analysis.ipynb`
+2. Ejecuta las celdas en orden
+3. El notebook carga automáticamente el dataset desde `/data/` o desde un enlace público (según corresponda)
+
+## 🧠 Objetivo del análisis
+
+- Identificar problemas de calidad de datos
+- Construir un pipeline de limpieza reproducible
+- Analizar comportamientos, distribuciones y outliers
+- Generar insights para el equipo de Estrategia e Integración de EverPeak
